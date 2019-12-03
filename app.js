@@ -4,7 +4,7 @@ const express = require('express');
 const app = express();
 const router = require('./routes/users');
 const bodyParser = require('body-parser');
-const customInterceptor = require('./helpers/responseFormat')
+const middlewares = require('./middlewares');
 
 app.use(bodyParser.urlencoded({
     extended: false
@@ -14,9 +14,10 @@ app.use(express.urlencoded({
     extended: false
 }))
 app.use(express.json());
-app.use(customInterceptor.responseFormat)
+app.use(middlewares.responseFormat);
+app.use(middlewares.errorHandler);
 
-mongoose.connect('mongodb+srv://testDB:fahad123@cluster0-v1xjs.mongodb.net/test?retryWrites=true&w=majority', {
+mongoose.connect("MONGO_DB", { //contains mongodb path
         useUnifiedTopology: true,
         useNewUrlParser: true,
         useCreateIndex: true
