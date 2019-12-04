@@ -1,3 +1,5 @@
+"use-strict"
+
 const { User, validate } = require('../models/user');
 const express = require('express');
 const router = express.Router();
@@ -8,7 +10,7 @@ router.post('/', async(req, res) => {
     if (error) {
         return res.sendResponse("failure", 400, "Name incorrect", req.body);
     }
-    if(success){
+    else{
         console.log(success);
         return res.sendResponse("success", 200, "User Registered Successfully", req.body);
     }
@@ -27,6 +29,7 @@ const register = async(req, res) => {
         });
         console.log(user);
         await user.save();
+        res.send(user);
     }
 }
 
