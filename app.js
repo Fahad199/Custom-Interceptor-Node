@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-// const users = require('./routes/users');
 const express = require('express');
 const app = express();
 const router = require('./routes/users');
@@ -17,7 +16,7 @@ app.use(express.json());
 app.use(middlewares.responseFormat);
 app.use(middlewares.errorHandler);
 
-mongoose.connect("MONGO_DB", { //contains mongodb path
+mongoose.connect('mongodb+srv://testDB:fahad123@cluster0-v1xjs.mongodb.net/test?retryWrites=true&w=majority', {
         useUnifiedTopology: true,
         useNewUrlParser: true,
         useCreateIndex: true
