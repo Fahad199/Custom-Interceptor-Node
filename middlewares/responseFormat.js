@@ -5,7 +5,7 @@ module.exports = function(req,res,next){
       "status": status,
       "code": code,
       "message": message,
-      "data": data
+      "data": status == 'failure' ? [] : data
     });
   }
   next()
