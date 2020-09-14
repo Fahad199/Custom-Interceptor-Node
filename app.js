@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(middlewares.responseFormat);
 app.use(middlewares.errorHandler);
 
-mongoose.connect('mongodb+srv://testDB:fahad123@cluster0-v1xjs.mongodb.net/test?retryWrites=true&w=majority', {
+mongoose.connect(process.env.DB_NAME, {
         useUnifiedTopology: true,
         useNewUrlParser: true,
         useCreateIndex: true
